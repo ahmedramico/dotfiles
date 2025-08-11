@@ -1,0 +1,8 @@
+[init]
+	defaultBranch = main
+[user]
+	name = Amhed Rami
+	email = ahmed.rami.company@gmail.com
+	signingkey = ahmed.rami.company@gmail.com
+[commit]
+	gpgsign = true
