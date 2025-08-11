@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -103,12 +105,66 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+export ANTIGEN_LOG=$HOME/antigen.log
+
+source $HOME/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle heroku
+antigen bundle pip
+antigen bundle lein
+antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle unixorn/fzf-zsh-plugin@main
+antigen bundle gsamokovarov/jump-ranger
+antigen bundle alexanderjeurissen/ranger_devicons@main
+antigen bundle cjbassi/ranger-fzf
+antigen bundle Aloxaf/fzf-tab
+# antigen bundle esc/conda-zsh-completion
+antigen bundle fdw/ranger_autojump@main
+
+antigen theme rkj-repos
+
+antigen apply
+
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+export BROWSER=brave
+
+alias n=nvim
+alias p=pnpm
+alias px=pnpx
+alias ze=zellij
+alias zl=zlayouts
+alias zs=zsessions
+alias m=mix
+alias e="exa -bTl"
+alias kp=kprojects
+alias ifc="ifconfig \$(ifconfig | grep mtu | grep -v br | grep -v veth | grep -vw lo | awk -F: '{print \$1}' | fzf)"
+
+export FZF_ALT_C_COMMAND="rg --hidden --files -g \\!.git --null 2>/dev/null | xargs -0 dirname | uniq"
+export FZF_CTRL_T_COMMAND="rg --hidden --files -g \\!.git 2>/dev/null | uniq"
+
+[ command -v gh &> /dev/null ] && . $(gh completion -s zsh)
 
 # append completions to fpath
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 
-. `asdf where rust`/env
-eval "$(starship init zsh)"
+[[ "$(which asdf)" != *"not found" ]] && [[ "$(which rustc)" != *"not found" ]] && . `asdf where rust`/env
+
+[[ "$(which fzf)" != *"not found" ]] && eval "$(fzf --zsh)"
+[[ "$(which starship)" != *"not found" ]] && eval "$(starship init zsh)"
+[[ "$(which jump)" != *"not found" ]] && eval "$(jump shell)"
+[[ "$(which zoxide)" != *"not found" ]] && eval "$(zoxide init zsh)"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
