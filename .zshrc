@@ -166,5 +166,8 @@ autoload -Uz compinit && compinit
 [[ "$(which jump)" != *"not found" ]] && eval "$(jump shell)"
 [[ "$(which zoxide)" != *"not found" ]] && eval "$(zoxide init zsh)"
 
+export TELEGRAM_APP_ID=$(gpg -d $HOME/telegram-app-id.txt.gpg 2>/dev/null)
+export TELEGRAM_APP_HASH=$(gpg -d $HOME/telegram-app-hash.txt.gpg 2>/dev/null)
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
