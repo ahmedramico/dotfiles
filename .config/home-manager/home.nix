@@ -31,7 +31,6 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     nerd-fonts.fira-code
-    ollama
     btop
     android-tools
     lazydocker
@@ -89,8 +88,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  services.ollama.enable = true;
-  services.ollama.host = "0.0.0.0";
   services.gpg-agent = {
     enable = true;
     extraConfig = ''
