@@ -21,19 +21,8 @@ return {
   },
   cmd = "FloatermToggle",
   keys = {
-    { "<c-/>", false },
-    { "<c-_>", false },
-    { "<leader>ft", false },
-    { "<leader>fT", false },
     {
       "<F1>",
-      function()
-        require("floaterm").toggle()
-      end,
-      desc = "Toggle Floaterm",
-    },
-    {
-      "<leader>ft",
       function()
         require("floaterm").toggle()
       end,
