@@ -9,7 +9,7 @@ return {
       desc = "File browser",
     },
     {
-      "<leader>cfe",
+      "<leader>cd",
       "<cmd>Telescope file_browser hidden=true cwd=%:p:h<cr>",
       desc = "File browser (CWD)",
     },
