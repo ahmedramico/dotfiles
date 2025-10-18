@@ -1,0 +1,47 @@
+{
+  "mcpServers": {
+    "context7": {
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "command": "npx"
+    },
+    "android-adb": {
+      "args": [
+        "-y",
+        "@landicefu/android-adb-mcp-server"
+      ],
+      "command": "npx",
+      "env": [
+        
+      ],
+      "disabled": false,
+      "alwaysAllow": [
+        
+      ]
+    },
+    "blender-mcp": {
+      "args": [
+        "--directory",
+        "/home/aramico/Downloads/blender-mcp-main",
+        "blender-mcp"
+      ],
+      "command": "uvx"
+    },
+    "server-commands": {
+      "args": [
+        "mcp-server-commands"
+      ],
+      "command": "npx"
+    },
+    "filesystem": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/home/aramico"
+      ],
+      "command": "npx"
+    }
+  }
+}

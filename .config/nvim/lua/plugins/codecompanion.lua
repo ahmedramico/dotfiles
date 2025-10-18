@@ -2,48 +2,25 @@ return {
   "olimorris/codecompanion.nvim",
   lazy = false,
   opts = {
-    adapters = {
-      http = {
-        gptoss = function()
-          return require("codecompanion.adapters").extend("ollama", {
-            name = "gpt-oss",
-            opts = {
-              vision = false,
-              stream = true,
-            },
-            schema = {
-              model = {
-                default = "gpt-oss:latest",
-              },
-              num_ctx = {
-                default = 16384,
-              },
-              think = {
-                default = false,
-              },
-              keep_alive = {
-                default = "5m",
-              },
-            },
-          })
-        end,
-      },
-    },
     strategies = {
       chat = {
-        adapter = "gptoss",
+        adapter = {
+          name = "ollama",
+          model = "gpt-oss:latest",
+        },
       },
       inline = {
-        adapter = "gptoss",
+        adapter = {
+          name = "ollama",
+          model = "gpt-oss:latest",
+        },
       },
     },
     prompt_library = {
       ["Boilerplate HTML"] = {
         strategy = "inline",
         description = "Generate some boilerplate HTML",
-        opts = {
-          mapping = "<LocalLeader>ch",
-        },
+        opts = {},
         prompts = {
           {
             role = "system",
@@ -53,6 +30,16 @@ return {
             role = "user",
             content = "<user_prompt>Please generate some HTML boilerplate for me. Return the code only and no markdown codeblocks</user_prompt>",
           },
+        },
+      },
+    },
+    extensions = {
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+        opts = {
+          make_vars = true,
+          make_slash_commands = true,
+          show_result_in_chat = true,
         },
       },
     },

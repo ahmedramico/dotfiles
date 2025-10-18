@@ -174,3 +174,21 @@ export TELEGRAM_BOT_TOKEN=$(gpg -d $HOME/telegram-bot-token.txt.gpg 2>/dev/null)
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+
+. "$HOME/.local/bin/env"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/aramico/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/aramico/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/aramico/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/aramico/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
