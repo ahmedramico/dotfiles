@@ -1,0 +1,91 @@
+add_newline = true
+format = """
+[┌───────\\[ $time \\]────────────\\[ $battery$os$username[@](yellow)$hostname\\($localip\\) \\]](bold green)
+[│](bold green)$directory$git_branch$git_status$rust$elixir$Erlang$nodejs$lua$php$python$terraform$package$conda
+[└─ $jobs$status ${custom.boltIfRoot}$character](bold green)
+"""
+# right_format = """[$time](red)"""
+ 
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+ 
+[os.symbols]
+Linux = " "
+Macos = " "
+Windows = " "
+
+[username]
+show_always = true
+style_user = 'blue'
+style_root = 'red'
+format = '[$user]($style)'
+
+[git_status]
+format = '[\($all_status$ahead_behind\)]($style) '
+style = "white"
+conflicted = '[🏳\($count\)](red bold)'
+ahead = '[⇡${count}](blue)'
+diverged = '[⇕⇡${ahead_count}⇣${behind_count}](red)'
+behind = '[⇣${count}](#FFA500)'
+up_to_date = '[✓](green)'
+untracked = '[  \($count\)](red bold) '
+stashed = '[ \($count\)](#FFA500) '
+modified = '[ \($count\)](yellow) '
+staged = '[++\($count\)](green) '
+renamed = '[ \($count\)](yellow) '
+deleted = '[󰆴 \($count\)](red) '
+
+[time]
+disabled = false
+format = '[ $time]($style)'
+time_format = '%T'
+
+[nodejs]
+detect_files = ['package.json']
+
+[status]
+style = 'white'
+symbol = '[](red)'
+success_symbol = '[](green)'
+not_found_symbol = '[](yellow)'
+not_executable_symbol = '[](red)'
+format = '[$symbol$maybe_int]($style)'
+map_symbol = true
+disabled = false
+
+[os]
+disabled = false
+
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol$hostname]($style) '
+style = 'blue'
+
+[localip]
+ssh_only = false
+disabled = false
+format = '[$localipv4]($style)'
+
+[terraform]
+disabled = false
+
+[custom.boltIfRoot]
+command = 'whoami'
+when = ''' test "$USERNAME" = "root" '''
+format = '[](#FFA500) '
+
+[conda]
+format = "[ \\($environment\\)](dimmed blue) "
+
+[python]
+symbol = ' '
+
+[package]
+symbol = ' '
+
+[elixir]
+symbol = ' '
+
+[character]
+error_symbol = "[✗](bold cyan)"
+success_symbol = "[❯](bold cyan)"
