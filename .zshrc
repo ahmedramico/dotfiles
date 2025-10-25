@@ -175,7 +175,7 @@ export TELEGRAM_BOT_TOKEN=$(gpg -d $HOME/telegram-bot-token.txt.gpg 2>/dev/null)
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
 
-. "$HOME/.local/bin/env"
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
