@@ -134,7 +134,7 @@ antigen theme rkj-repos
 
 antigen apply
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH:$HOME/.cache/rebar3/bin"
 
 export BROWSER=brave
 
@@ -192,3 +192,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+eval "$(mise activate zsh)"
