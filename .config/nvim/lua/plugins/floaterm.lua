@@ -2,6 +2,7 @@ return {
   "nvzone/floaterm",
   dependencies = "nvzone/volt",
   opts = {
+    border = true,
     mappings = {
       term = function(buf)
         vim.keymap.set({ "n", "t" }, "<F1>", function()
