@@ -11,6 +11,7 @@ return {
   },
   keys = {
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    { "<leader>cs", "<cmd>Telescope colorscheme<cr>", desc = "Change colorscheme" },
     {
       "<leader>fp",
       function()
